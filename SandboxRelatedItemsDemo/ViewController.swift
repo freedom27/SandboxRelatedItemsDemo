@@ -71,9 +71,15 @@ class ViewController: NSViewController {
     }
 
     @IBAction func writeFile(sender: AnyObject) {
-        println("Write File")
-        var error: NSError?
-        fileData?.filePath.writeToFile(fileData!.altFilePath, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
+        var errorMain: NSError?
+        let coord = NSFileCoordinator(filePresenter: fileData!)
+        let url: NSURL = fileData!.presentedItemURL!
+        coord.coordinateWritingItemAtURL(url, options: NSFileCoordinatorWritingOptions.allZeros, error: &errorMain, byAccessor: { writeUrl in
+            println("Write File")
+            var error: NSError?
+            self.fileData?.filePath.writeToFile(self.fileData!.altFilePath, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
+            return
+        })
     }
 }
 
