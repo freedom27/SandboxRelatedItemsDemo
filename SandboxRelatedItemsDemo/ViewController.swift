@@ -64,7 +64,7 @@ class ViewController: NSViewController {
             let path = panel.URL?.path ?? ""
             self.fileData = FileData(path: path)
             self.filenameLabel.stringValue = path
-            //NSFileCoordinator.addFilePresenter(self.fileData!)
+            NSFileCoordinator.addFilePresenter(self.fileData!)
             return
         }
         
@@ -77,7 +77,7 @@ class ViewController: NSViewController {
         coord.coordinateWritingItemAtURL(url, options: NSFileCoordinatorWritingOptions.allZeros, error: &errorMain, byAccessor: { writeUrl in
             println("Write File")
             var error: NSError?
-            self.fileData?.filePath.writeToFile(self.fileData!.altFilePath, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
+            "Stuff to write in the file".writeToFile(self.fileData!.altFilePath, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
             return
         })
     }
