@@ -22,11 +22,11 @@ class FileData: NSObject {
 
 extension FileData: NSFilePresenter {
     var presentedItemURL: NSURL? {
-        return NSURL(fileURLWithPath: filePath)
+        return NSURL(fileURLWithPath: altFilePath)
     }
     
     var primaryPresentedItemURL: NSURL? {
-        return NSURL(fileURLWithPath: altFilePath)
+        return NSURL(fileURLWithPath: filePath)
     }
     
     var presentedItemOperationQueue: NSOperationQueue {
@@ -65,6 +65,7 @@ class ViewController: NSViewController {
             self.fileData = FileData(path: path)
             self.filenameLabel.stringValue = path
             NSFileCoordinator.addFilePresenter(self.fileData!)
+            NSFileCoordinator.filePresenters()
             return
         }
         

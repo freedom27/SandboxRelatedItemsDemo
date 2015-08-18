@@ -25,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1AC43F0F1B83E5A4002D2628 /* SandboxRelatedItemsDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SandboxRelatedItemsDemo.entitlements; sourceTree = "<group>"; };
 		1AD272291B83D45800EB2CCF /* SandboxRelatedItemsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SandboxRelatedItemsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD2722D1B83D45800EB2CCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AD2722E1B83D45800EB2CCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		1AD2722B1B83D45800EB2CCF /* SandboxRelatedItemsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1AC43F0F1B83E5A4002D2628 /* SandboxRelatedItemsDemo.entitlements */,
 				1AD2722E1B83D45800EB2CCF /* AppDelegate.swift */,
 				1AD272301B83D45800EB2CCF /* ViewController.swift */,
 				1AD272321B83D45800EB2CCF /* Images.xcassets */,
@@ -158,6 +160,11 @@
 				TargetAttributes = {
 					1AD272281B83D45800EB2CCF = {
 						CreatedOnToolsVersion = 6.4;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					1AD2723A1B83D45800EB2CCF = {
 						CreatedOnToolsVersion = 6.4;
@@ -327,6 +334,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SandboxRelatedItemsDemo/SandboxRelatedItemsDemo.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SandboxRelatedItemsDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -338,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SandboxRelatedItemsDemo/SandboxRelatedItemsDemo.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SandboxRelatedItemsDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -400,6 +409,7 @@
 				1AD272471B83D45800EB2CCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1AD272481B83D45800EB2CCF /* Build configuration list for PBXNativeTarget "SandboxRelatedItemsDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +418,7 @@
 				1AD2724A1B83D45800EB2CCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
