@@ -8,8 +8,36 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class FileData: NSObject {
+    var filePath: String
+    var altFilePath: String
+    
+    init(path: String) {
+        filePath = path
+        let alt = path.substringToIndex(advance(path.endIndex, -3))
+        altFilePath = alt + "srt"
+        println(altFilePath)
+    }
+}
 
+extension FileData: NSFilePresenter {
+    var presentedItemURL: NSURL? {
+        return NSURL(fileURLWithPath: filePath)
+    }
+    
+    var primaryPresentedItemURL: NSURL? {
+        return NSURL(fileURLWithPath: altFilePath)
+    }
+    
+    var presentedItemOperationQueue: NSOperationQueue {
+        return NSOperationQueue.mainQueue()
+    }
+}
+
+class ViewController: NSViewController {
+    
+    var fileData: FileData?
+    @IBOutlet weak var filenameLabel: NSTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +50,30 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func loadFile(sender: AnyObject) {
+        println("Load file")
+        
+        let panel = NSOpenPanel()
+        panel.allowsMultipleSelection = true
+        panel.canChooseDirectories = false
+        panel.canCreateDirectories = false
+        panel.canChooseFiles = true
+        
+        
+        panel.beginSheetModalForWindow (self.view.window!) { result in
+            let path = panel.URL?.path ?? ""
+            self.fileData = FileData(path: path)
+            self.filenameLabel.stringValue = path
+            //NSFileCoordinator.addFilePresenter(self.fileData!)
+            return
+        }
+        
+    }
 
+    @IBAction func writeFile(sender: AnyObject) {
+        println("Write File")
+        var error: NSError?
+        fileData?.filePath.writeToFile(fileData!.altFilePath, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
+    }
 }
 
