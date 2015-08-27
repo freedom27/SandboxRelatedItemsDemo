@@ -8,45 +8,22 @@
 
 import Cocoa
 
-class FileData: NSObject {
-    var filePath: String
-    var altFilePath: String
-    
-    init(path: String) {
-        filePath = path
-        let alt = path.substringToIndex(advance(path.endIndex, -3))
-        altFilePath = alt + "srt"
-        println(altFilePath)
-    }
-}
-
-extension FileData: NSFilePresenter {
-    var presentedItemURL: NSURL? {
-        return NSURL(fileURLWithPath: altFilePath)
-    }
-    
-    var primaryPresentedItemURL: NSURL? {
-        return NSURL(fileURLWithPath: filePath)
-    }
-    
-    var presentedItemOperationQueue: NSOperationQueue {
-        return NSOperationQueue.mainQueue()
-    }
-}
-
 class ViewController: NSViewController {
     
     var fileData: FileData?
     @IBOutlet weak var filenameLabel: NSTextField!
+    @IBOutlet weak var extensionMenu: NSPopUpButton!
+    @IBOutlet weak var writeButton: NSButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-
-    override var representedObject: AnyObject? {
-        didSet {
-        // Update the view, if already loaded.
+    
+    @IBAction func updateExtension(sender: AnyObject) {
+        if let fData = fileData {
+            fData.ext = extensionMenu.titleOfSelectedItem!
+            NSFileCoordinator.removeFilePresenter(fData)
+            NSFileCoordinator.addFilePresenter(fData)
+            print(fData.ext)
         }
     }
 
@@ -65,22 +42,23 @@ class ViewController: NSViewController {
             self.fileData = FileData(path: path)
             self.filenameLabel.stringValue = path
             NSFileCoordinator.addFilePresenter(self.fileData!)
-            NSFileCoordinator.filePresenters()
+            self.writeButton.enabled = true
             return
         }
         
     }
 
     @IBAction func writeFile(sender: AnyObject) {
-        var errorMain: NSError?
-        let coord = NSFileCoordinator(filePresenter: fileData!)
-        let url: NSURL = fileData!.presentedItemURL!
-        coord.coordinateWritingItemAtURL(url, options: NSFileCoordinatorWritingOptions.allZeros, error: &errorMain, byAccessor: { writeUrl in
-            println("Write File")
-            var error: NSError?
-            "Stuff to write in the file".writeToFile(self.fileData!.altFilePath, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
-            return
-        })
+        if let fData = fileData, let url = fData.presentedItemURL {
+            var errorMain: NSError?
+            let coord = NSFileCoordinator(filePresenter: fData)
+            coord.coordinateWritingItemAtURL(url, options: NSFileCoordinatorWritingOptions.allZeros, error: &errorMain, byAccessor: { writeUrl in
+                println("Write File")
+                var error: NSError?
+                "Stuff to write in the file".writeToFile(writeUrl.path!, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
+                return
+            })
+        }
     }
 }
 

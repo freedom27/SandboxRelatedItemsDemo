@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1ABEB0F71B8FC1D100A28B1C /* FileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABEB0F61B8FC1D100A28B1C /* FileData.swift */; };
 		1AD2722F1B83D45800EB2CCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD2722E1B83D45800EB2CCF /* AppDelegate.swift */; };
 		1AD272311B83D45800EB2CCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD272301B83D45800EB2CCF /* ViewController.swift */; };
 		1AD272331B83D45800EB2CCF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AD272321B83D45800EB2CCF /* Images.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1ABEB0F61B8FC1D100A28B1C /* FileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileData.swift; sourceTree = "<group>"; };
 		1AC43F0F1B83E5A4002D2628 /* SandboxRelatedItemsDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SandboxRelatedItemsDemo.entitlements; sourceTree = "<group>"; };
 		1AD272291B83D45800EB2CCF /* SandboxRelatedItemsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SandboxRelatedItemsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD2722D1B83D45800EB2CCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				1AD272301B83D45800EB2CCF /* ViewController.swift */,
 				1AD272321B83D45800EB2CCF /* Images.xcassets */,
 				1AD272341B83D45800EB2CCF /* Main.storyboard */,
+				1ABEB0F61B8FC1D100A28B1C /* FileData.swift */,
 				1AD2722C1B83D45800EB2CCF /* Supporting Files */,
 			);
 			path = SandboxRelatedItemsDemo;
@@ -155,6 +158,7 @@
 		1AD272211B83D45800EB2CCF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Stefano Vettor";
 				TargetAttributes = {
@@ -217,6 +221,7 @@
 			files = (
 				1AD272311B83D45800EB2CCF /* ViewController.swift in Sources */,
 				1AD2722F1B83D45800EB2CCF /* AppDelegate.swift in Sources */,
+				1ABEB0F71B8FC1D100A28B1C /* FileData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

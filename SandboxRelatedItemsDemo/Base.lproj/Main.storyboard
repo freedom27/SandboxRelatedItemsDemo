@@ -674,9 +674,9 @@
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xuu-DI-33I">
                                 <rect key="frame" x="338" y="96" width="122" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="Write File" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yE4-bq-zFK">
+                                <buttonCell key="cell" type="roundRect" title="Write File" bezelStyle="roundedRect" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yE4-bq-zFK">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="controlContent"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="writeFile:" target="XfG-lQ-9wD" id="fSR-kW-kDV"/>
@@ -694,16 +694,37 @@
                                 <rect key="frame" x="20" y="96" width="122" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="Load File" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c6z-NA-ug3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="controlContent"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="loadFile:" target="XfG-lQ-9wD" id="Pz3-8M-yuJ"/>
                                 </connections>
                             </button>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5d6-9W-j7L">
+                                <rect key="frame" x="191" y="91" width="100" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="srt" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BER-Yl-qFg" id="aI6-4D-FZc">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="SVS-sU-3CG">
+                                        <items>
+                                            <menuItem title="srt" state="on" id="BER-Yl-qFg">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                            <menuItem title="txt" id="GIy-TR-dzN"/>
+                                            <menuItem title="sub" id="I1G-TY-cbQ"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="updateExtension:" target="XfG-lQ-9wD" id="HYc-dE-VAb"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="extensionMenu" destination="5d6-9W-j7L" id="qfc-T6-N9y"/>
                         <outlet property="filenameLabel" destination="0Gb-Oc-ecD" id="xAq-UC-o80"/>
+                        <outlet property="writeButton" destination="Xuu-DI-33I" id="MGY-ea-KOR"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
