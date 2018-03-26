@@ -54,12 +54,11 @@ class ViewController: NSViewController {
             let coord = NSFileCoordinator(filePresenter: fData)
             coord.coordinate(writingItemAt: url as URL, options: .forReplacing, error: &errorMain, byAccessor: { writeUrl in
                 print("Write File")
-                var error: NSError?
                 do {
                     try "Stuff to write in the file".write(toFile: writeUrl.path, atomically: true, encoding: String.Encoding.utf8)
 
                 } catch {
-                    print("exception")
+                    print("Error writing to file: \(error)")
                 }
                 return
             })
