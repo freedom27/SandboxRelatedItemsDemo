@@ -18,7 +18,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func updateExtension(sender: AnyObject) {
+    @IBAction func updateExtension(_ sender: AnyObject) {
         if let fData = fileData {
             fData.ext = extensionMenu.titleOfSelectedItem!
             NSFileCoordinator.removeFilePresenter(fData)
@@ -27,8 +27,8 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func loadFile(sender: AnyObject) {
-        println("Load file")
+    @IBAction func loadFile(_ sender: AnyObject) {
+        print("Load file")
         
         let panel = NSOpenPanel()
         panel.allowsMultipleSelection = true
@@ -37,25 +37,29 @@ class ViewController: NSViewController {
         panel.canChooseFiles = true
         
         
-        panel.beginSheetModalForWindow (self.view.window!) { result in
-            let path = panel.URL?.path ?? ""
+        panel.beginSheetModal (for: self.view.window!) { result in
+            let path = panel.url?.path ?? ""
             self.fileData = FileData(path: path)
             self.filenameLabel.stringValue = path
             NSFileCoordinator.addFilePresenter(self.fileData!)
-            self.writeButton.enabled = true
+            self.writeButton.isEnabled = true
             return
         }
         
     }
 
-    @IBAction func writeFile(sender: AnyObject) {
+    @IBAction func writeFile(_ sender: AnyObject) {
         if let fData = fileData, let url = fData.presentedItemURL {
             var errorMain: NSError?
             let coord = NSFileCoordinator(filePresenter: fData)
-            coord.coordinateWritingItemAtURL(url, options: NSFileCoordinatorWritingOptions.allZeros, error: &errorMain, byAccessor: { writeUrl in
-                println("Write File")
-                var error: NSError?
-                "Stuff to write in the file".writeToFile(writeUrl.path!, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
+            coord.coordinate(writingItemAt: url as URL, options: .forReplacing, error: &errorMain, byAccessor: { writeUrl in
+                print("Write File")
+                do {
+                    try "Stuff to write in the file".write(toFile: writeUrl.path, atomically: true, encoding: String.Encoding.utf8)
+
+                } catch {
+                    print("Error writing to file: \(error)")
+                }
                 return
             })
         }

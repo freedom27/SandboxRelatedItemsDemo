@@ -19,19 +19,19 @@ class FileData: NSObject {
 
 // MARK: - NSFilePresenter
 extension FileData: NSFilePresenter {
-    var presentedItemURL: NSURL? {
-        let range = filePath.rangeOfString(".", options:NSStringCompareOptions.BackwardsSearch)
-        let baseName = filePath.substringToIndex((range?.startIndex)!)
-        
+    var presentedItemURL: URL? {
+        let range = filePath.range(of: ".", options:NSString.CompareOptions.backwards)
+        let baseName = String(filePath[..<range!.lowerBound])
+
         let altFilePath = baseName + "." + ext
-        return NSURL(fileURLWithPath: altFilePath)
+        return URL(fileURLWithPath: altFilePath)
     }
     
-    var primaryPresentedItemURL: NSURL? {
-        return NSURL(fileURLWithPath: filePath)
+    var primaryPresentedItemURL: URL? {
+        return URL(fileURLWithPath: filePath)
     }
     
-    var presentedItemOperationQueue: NSOperationQueue {
-        return NSOperationQueue.mainQueue()
+    var presentedItemOperationQueue: OperationQueue {
+        return OperationQueue.main
     }
 }
