@@ -164,6 +164,7 @@
 				TargetAttributes = {
 					1AD272281B83D45800EB2CCF = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0830;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -172,6 +173,7 @@
 					};
 					1AD2723A1B83D45800EB2CCF = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0830;
 						TestTargetID = 1AD272281B83D45800EB2CCF;
 					};
 				};
@@ -344,6 +346,7 @@
 				INFOPLIST_FILE = SandboxRelatedItemsDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -356,6 +359,7 @@
 				INFOPLIST_FILE = SandboxRelatedItemsDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -375,6 +379,7 @@
 				INFOPLIST_FILE = SandboxRelatedItemsDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SandboxRelatedItemsDemo.app/Contents/MacOS/SandboxRelatedItemsDemo";
 			};
 			name = Debug;
@@ -391,6 +396,7 @@
 				INFOPLIST_FILE = SandboxRelatedItemsDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SandboxRelatedItemsDemo.app/Contents/MacOS/SandboxRelatedItemsDemo";
 			};
 			name = Release;
